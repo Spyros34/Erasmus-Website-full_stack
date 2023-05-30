@@ -49,49 +49,51 @@
                 <h2>Εγγραφή</h2> 
             </div> 
             <p class="par">Συμπληρώστε τα παρακάτω πεδία για να κάνετε εγγραφή.</p>
-            
-            <div class="field1">
-                <h1 class="h1_field">Όνομα:</h1>
-                <input type="text" id="name" name="name" required><br><br>
+            <form>
+                <div class="field1">
+                    <h1 class="h1_field">Όνομα:</h1>
+                    <input type="text" id="nameField" name="name" pattern="[^\d]+" required><br><br>
 
-            </div>
-            <div class="field">
-                <h1 class="h1_field">Επίθετο:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                </div>
+                <div class="field">
+                    <h1 class="h1_field">Επίθετο:</h1>
+                    <input type="text" id="surnameField" name="surname" pattern="[^\d]+" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Αριθμός Μητρώου:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Αριθμός Μητρώου:</h1>
+                    <input type="text" id="surnameField" name="surname" maxlength="13" pattern="^(2022|2024|2025)\d{9}$" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Τηλέφωνο:</h1>
-                <input type="tel" id="mobile" name="mobile" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Τηλέφωνο:</h1>
+                    <input type="tel" id="mobileField" name="mobile" minlength="10" maxlength="10" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Email:</h1>
-                <input type="email" id="email" name="email" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Email:</h1>
+                    <input type="email" id="emailField" name="email" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Username:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Username:</h1> <!-- Database check -->
+                    <input type="text" id="surnameField" name="surname" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Password:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Password:</h1>
+                    <input type="password" id="passwordField" name="password" minlength="5" pattern="^(?=.*[!#$@%&*])[a-zA-Z0-9!#$@%&*]+$" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Confirm-Password:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Confirm-Password:</h1>
+                    <input type="password" id="confirmPasswordField" name="confirmPassword" oninput="checkPasswordMatch()" required><br><br>
+                    <p id="passwordMatchError" class="error-message">Οι κωδικοί πρόσβασης δεν ταιριάζουν.</p>
+                </div>
 
-            <input type="submit" value="Εγγραφή">   
-            
+                <input type="submit" value="Εγγραφή"> 
+                  
+            </form>
         </div>
     </div>
 </div>
@@ -102,3 +104,20 @@
 
 
 </body>
+
+<script>
+    var passwordField = document.getElementById('passwordField');
+    var confirmPasswordField = document.getElementById('confirmPasswordField');
+    var passwordMatchError = document.getElementById('passwordMatchError');
+
+    function checkPasswordMatch() {
+        var password = passwordField.value;
+        var confirmPassword = confirmPasswordField.value;
+
+        if (password !== confirmPassword) {
+            passwordMatchError.style.display = 'block';
+        } else {
+            passwordMatchError.style.display = 'none';
+        }
+    }
+</script>
