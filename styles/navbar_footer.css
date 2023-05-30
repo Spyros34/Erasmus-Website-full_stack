@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap");
+
+* {
+    box-sizing: border-box;
+    padding :0 ; 
+    margin : 0;
+}
+
+html {
+    font-family: "Montserrat";
+}
+
+
+/* Navbar */
+
+.navbar{
+    background-color: #404040;
+    font-size: 15px;
+}
+
+.menu{
+    list-style-type: none; 
+}
+
+
+.menu li {
+    padding: 20px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+
+}
+
+.menu li a {
+    color: rgb(211, 211, 211);
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    
+}
+
+
+  
+.menu li a:hover {
+    color: rgb(123, 123, 123);
+    width: 10em;
+}
+  
+
+.uni_logo{
+    height:2.3em;
+    padding: auto;
+    margin-top: 0.2em;
+}
+
+.button:not(.secondary){
+    border-top: #999 solid ;
+    border-width: 0.09em;
+}
+
+
+
+/* Mobile Navbar */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.toggle {
+    order: 1;
+}
+.item.button {
+    order: 3;
+}
+.item {
+    width: 100%;
+    text-align: center;
+    order: 2;
+    display: none;
+    
+    
+}
+.item.active {
+    display: block;
+}
+
+/* Navbar Toggle */
+.toggle {
+    cursor:pointer;
+}
+
+.bars {
+    background: #999;
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    transition: background .2s ease-out;
+    width: 18px;
+    margin-bottom: 0.23em;
+}
+
+.bars:before,
+.bars:after {
+    background: #999;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .2s ease-out;
+    width: 100%;
+}
+
+.bars:before {
+    top: 6px;
+}
+.bars:after {
+    top: -6px;
+}
+
+.button:not(.secondary) a:hover{
+    background: rgba(15,175,81,255);
+   
+}
+
+.button.secondary a:hover {
+    color: #ddd;
+    background-color: #0166d6;
+} 
+
+.columns {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.uni_building{
+   max-width:100%;
+   height: auto;
+}
+
+/* footer */
+.footer{
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    background-color:#54545497;
+    padding: 2em;
+}
+
+/* Tablet menu */
+@media all and (min-width: 768px) {
+
+    /* Navbar */
+    .menu {
+        justify-content: center;
+    }
+  
+    .logo {
+        flex: 1;
+    }
+  
+    .item.button {
+        width: auto;
+        order: 1;
+        display: block;
+    }
+    .toggle {
+        order: 1;
+    }
+    .button.secondary {
+        border: 0;
+    }
+    .button a {
+        padding: 7.5px 15px;
+        background: rgb(153, 153, 153);
+        border: 1px rgb(128, 128, 128) solid;
+        border-radius:50em;
+    }
+    .button.secondary a {
+        background: transparent;    
+    }
+    .button a:hover {
+        text-decoration: none;
+        transition:all .25s;
+    }
+
+    .button:not(.secondary) a:hover{
+        background: rgba(15,175,81,255);
+       
+    }
+   
+    .button.secondary a:hover {
+        color: #ddd;
+        background-color: #0166d6;
+    } 
+
+    .button:not(.secondary){
+       border : none ;
+    }
+
+}
+
+/* Desktop menu */
+@media all and (min-width: 1068px) {
+
+    /* Navbar */
+    .item {
+        display: block;
+        width: auto;
+    }
+    .toggle {
+        display: none;
+    }
+    .logo {
+        order: 0;
+    }
+    .item {
+        order: 1;
+    }
+    .button {
+        order: 2;
+    }
+    .menu li {
+        padding: 15px 10px;
+    }
+    .menu li.button {
+        padding-right: 0;
+    }
+}

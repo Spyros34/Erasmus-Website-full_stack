@@ -1,0 +1,479 @@
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Mobile Content */
+
+section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1e1f26;
+}
+.container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.left {
+    width: 100%;
+    height: 400px;
+    background: url(../media/img/hand_books.jpg)
+      no-repeat center / cover;
+    border-radius: 8px;
+}
+.right {
+    width: 90%;
+    min-height: 400px;
+    background-color: #7e7976;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 8px;
+    color: white;
+    margin: 0;
+    margin-top: -100px;
+}
+.right h1 {
+    font-size: 40px;
+    font-weight: lighter;
+}
+.right p {
+    margin: 20px 0;
+    font-weight: 500;
+    line-height: 25px;
+}
+.right a {
+    text-decoration: none;
+    text-transform: uppercase;
+    background-color: white;
+    color: black;
+    padding: 20px 30px;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+/* Card */
+.container2 {
+    background-color: #1e1f26; 
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:Opx 90px;  
+}
+.content-section{
+    background-color: #e0d8cab3;
+    min-height: 70vh;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items:center ;
+    align-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.content-section .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content:space-between;
+    flex: 1;
+    margin:20px 20px;
+    box-shadow: 0px 2px 8px 0px rgba(123, 120, 120, 0.249) ;
+    border-radius: 3px;
+}
+
+.content-section .card .h2_first{
+    margin:15px Opx; 
+    margin-bottom: 10px;
+    font-size: 23px; 
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #3f362e;
+}
+
+.par{
+    margin-top: 5px;
+}
+
+/* Table Style */
+
+
+.table {
+    margin: 0;
+    margin-top: 20px;
+    display: none;
+}
+
+.table_mobile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile_th {
+    color: #ffffff;
+    background-color: #76706c;
+    margin-top: 17px;
+    padding: 10px;
+}
+
+.mobile_td { 
+    padding: 17px;
+    text-align: center;
+}
+
+.mobile_th1{
+    margin-top: 30px;
+}
+
+.styled-table {
+    width: 100%;
+    max-width: none;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.8em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead {
+    flex-basis: 100%;
+    order: 1;
+}
+  
+
+.styled-table thead tr {
+    background-color: #76706c;
+    color: #ffffff;
+    text-align: left; 
+}
+
+.styled-table td {
+  flex-basis: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+
+.styled-table th {
+    flex-basis: 100%;
+    text-align: center;
+    padding: 10px;
+    text-align: center;
+}
+
+.styled-table tbody {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    order: 2;
+}
+
+.styled-table tr {
+    display: flex;
+    flex-basis: 100%;
+}
+
+
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #76706c;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+
+
+/* form */
+
+.auto_form {
+    margin-top: 40px;
+}
+
+.form_options_year{
+    margin-right: 30%;
+    margin-left: 30%;
+}
+
+form {
+    font-family: sans-serif;
+}
+  
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 14px;
+}
+  
+select {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    font-family: inherit;
+    border: 1px solid rgba(155, 152, 152, 0.822);
+    border-radius: 4px;
+    appearance: none;
+    background-color: rgb(106, 106, 106);
+    background-image: linear-gradient(to bottom, #fff, #e3e3e3b9);
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+  
+select:hover,
+select:focus {
+    border-color: #aaa;
+    background-image: linear-gradient(to bottom, #f5f5f5, #f2f2f2);
+}
+  
+select option {
+    color: #333;
+    background-color: #fff;
+ }
+  
+select option:checked {
+    background-color: #818991;
+    color: rgb(168, 166, 166);
+}
+  
+.h1_form{
+    font-size: 20px;
+    font-weight: lighter;
+} 
+  
+
+/* input field1 */
+
+.field1 {
+    margin-top: 20px;
+}
+
+.h1_field1 {
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+
+input[type="number"] {
+    width: 80px;
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 2px solid rgb(106, 106, 106);
+    outline: none;
+    background-image: linear-gradient(to bottom, #fff, #e3e3e3b9);
+    margin-top: 17px;
+}
+  
+ 
+input[type="number"]:focus {
+    border-color: #ccc;
+}
+  
+ 
+input[type="number"]:invalid {
+    border-color: #dc3545;
+}
+
+/* input field2 */
+
+.field2 {
+    margin-top: 20px;
+}
+
+.h1_field2 {
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
+
+/* form radio_buttons */
+
+.form_radio_buttons {
+    margin-top: 20px;
+}
+
+.h1_form_radio_buttons{
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: sans-serif;
+    margin-bottom: 17px;
+}
+
+.form_radio_buttons label {
+    color : rgb(72, 72, 72);
+}
+
+input[type="radio"]:checked {
+    background-color: rgb(106, 106, 106);
+}
+
+input[type="submit"] {
+    background-color: rgb(106, 106, 106);
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    margin-top: 15px;
+}
+  
+  input[type="submit"]:hover {
+    background-color: rgba(106, 106, 106, 0.788);
+}
+
+/* message style */
+.message {
+    display: none;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.success {
+    color: white;
+}
+
+.error {
+    color: white;
+}
+
+
+
+/* Tablet menu */
+@media all and (min-width: 768px) {
+
+    /* Content */
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;    
+    }
+
+    .left {
+        width: 80%;
+        height: 700px;
+        background: url(../media/img/hand_books.jpg)
+          no-repeat center / cover;
+        border-radius: 8px;
+    }
+    
+    .right {
+        width: 60%;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        border-radius: 8px;
+        color: white;
+        margin-left: -150px;
+    }
+
+    .table {
+        display: block;
+    }
+
+    .table_mobile {
+        display: none;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        flex-basis: 100%;
+        text-align: center;
+        padding: 40px;
+        
+    }
+
+   
+
+    
+    
+}
+
+
+  
+/* Desktop menu */
+@media all and (min-width: 1068px) {
+
+    /* content */
+    .left {
+        width: 80%;
+        height: 900px;
+    }
+
+    .right {
+        width: 60%;
+        margin-left: -200px;
+        min-height: 500px;
+    }
+
+    .content-section{
+        min-width: 300px;
+        min-height: 100vh;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        flex-basis: 100%;
+        text-align: center;
+        padding: 50px;
+    }
+
+    .table {
+        display: block;
+    }
+
+    .table_mobile {
+        display: none;
+    }
+}
+   

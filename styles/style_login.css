@@ -1,0 +1,120 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+/* Mobile Content */
+
+/* Card */
+.container2 {
+    background-color: #1e1f26; 
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:Opx 90px;
+    
+}
+.content-section{
+    background-color: #e0d8cab3;
+    min-height: 40vh;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items:center ;
+    align-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.content-section .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content:space-between;
+    flex: 1;
+    margin:20px 20px;
+    box-shadow: 0px 2px 8px 0px rgba(123, 120, 120, 0.249) ;
+    border-radius: 3px;
+    
+}
+
+.content-section .card .h2_first{
+    margin:15px Opx; 
+    margin-bottom: 10px;
+    font-size: 23px; 
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #3f362e;
+}
+
+.par{
+    margin-top: 5px;
+}
+
+/* input field1 */
+
+.field1 {
+    margin-top: 20px;
+}
+
+.h1_field {
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: sans-serif;
+   
+}
+
+input[type="text"] {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid rgb(106, 106, 106);
+    background-image: linear-gradient(to bottom, #fff, #e3e3e3b9);
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="text"]:invalid {
+    border-color: #dc3545;
+}
+
+input[type="text"]:focus {
+    border-color: #ccc;
+}
+
+/* input field2 */
+
+.field {
+    margin-top: 10px;
+}
+
+/* Submit */
+
+input[type="submit"] {
+    background-color: rgb(106, 106, 106);
+    color: #fff; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+  
+  input[type="submit"]:hover {
+    background-color: rgba(106, 106, 106, 0.788);
+}
