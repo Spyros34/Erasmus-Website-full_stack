@@ -49,7 +49,7 @@
                 <h2>Εγγραφή</h2> 
             </div> 
             <p class="par">Συμπληρώστε τα παρακάτω πεδία για να κάνετε εγγραφή.</p>
-            <form>
+            <form id="signup_form" name="signup_form" action="post_signup_data.php" method="post">
                 <div class="field1">
                     <h1 class="h1_field">Όνομα:</h1>
                     <input type="text" id="nameField" name="name" pattern="[^\d]+" required><br><br>
