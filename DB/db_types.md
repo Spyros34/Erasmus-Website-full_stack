@@ -4,13 +4,14 @@
 ```
 
 CREATE TABLE Users (
-    user_id : int NOT NULL , 
-    fname : varchar(255) ,
-    lname : varchar(255) ,
-    password : varchar(255) ,
-    username : varchar(255) ,
-    email : varchar(255) ,
-    a_m : varchar(255) , 
+    user_id INT NOT NULL AUTO_INCREMENT,
+    fname VARCHAR(255),
+    lname VARCHAR(255),
+    password VARCHAR(255),
+    username VARCHAR(255),
+    email VARCHAR(255),
+    a_m VARCHAR(255),
+    tel VARCHAR(255),
     PRIMARY KEY (user_id)
 );
 
@@ -20,11 +21,13 @@ CREATE TABLE Users (
 
 ```
 
-CREATE TABLE User_t(
-    user_type_id int,
-    user_type int, 
-    FOREIGN KEY (user_type_id) REFERENCE User(user_id)
+CREATE TABLE User_t (
+    user_type_id INT,
+    user_type INT,
+    FOREIGN KEY (user_type_id) REFERENCES Users (user_id)
 );
+
+
 
 ```
 
@@ -33,20 +36,21 @@ CREATE TABLE User_t(
 ```
 
 CREATE TABLE applications (
-    application_id : int NOT NULL , 
-    passed_courses : int ,
-    average_passed_courses : int ,
-    english_certificate : varchar(255) ,
-    foreign_languages : varchar(255) ,
-    first_uni : varchar(255) ,
-    second_uni : varchar(255) , 
-    third_uni : varchar(255) , 
-    transcript : text , 
-    english_degree : text ,
-    other_degrees : text , 
-    tick_box : int ,  
-    PRIMARY KEY (application_id )
+    application_id INT NOT NULL AUTO_INCREMENT,
+    passed_courses INT,
+    average_passed_courses INT,
+    english_certificate VARCHAR(255),
+    foreign_languages VARCHAR(255),
+    first_uni VARCHAR(255),
+    second_uni VARCHAR(255),
+    third_uni VARCHAR(255),
+    transcript TEXT,
+    english_degree TEXT,
+    other_degrees TEXT,
+    tick_box INT,
+    PRIMARY KEY (application_id)
 );
+
 
 ```
 
@@ -55,11 +59,11 @@ CREATE TABLE applications (
 
 ```
 
-CREATE TABLE fill(
-    user_id int,
-    application_id int, 
-    FOREIGN KEY (user_id) REFERENCE User(user_id),
-    FOREIGN KEY (application_id) REFERENCE applications(application_id)
+CREATE TABLE fill (
+    user_id INT,
+    application_id INT,
+    FOREIGN KEY (user_id) REFERENCES Users (user_id),
+    FOREIGN KEY (application_id) REFERENCES applications (application_id)
 );
 
 ```
@@ -69,10 +73,11 @@ CREATE TABLE fill(
 ```
 
 CREATE TABLE Universities (
-    university_id : int NOT NULL , 
-    university_name : varchar(255) ,
-    country : varchar(255) ,
+    university_id INT NOT NULL AUTO_INCREMENT,
+    university_name VARCHAR(255),
+    country VARCHAR(255),
     PRIMARY KEY (university_id)
 );
+
 
 ```
