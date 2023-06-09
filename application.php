@@ -67,9 +67,7 @@ if (!isset($_SESSION['username'])) {
     </footer>  ';
 
     exit;
-} else {
-    // Continue with displaying the protected content or performing other actions
-}
+} 
 ?>
 
 
@@ -105,15 +103,16 @@ if (!isset($_SESSION['username'])) {
     <ul class="menu">
         <li class="logo"> <a href="index.php"><img class="uni_logo" src="./media/img/university-logo.svg" class="uni_logo" alt="Logo image" /></a></li>
         <li class="item"><a href="index.php">Αρχική</a></li>
-        <li class="item"><a href="more.php">Περισσότερα</a></li>
-        <li class="item"><a href="reqs.php">Ελάχιστες Απαιτήσεις</a></li>
+        <li class="item"><a href="reg_user_more.php">Περισσότερα</a></li>
+        <li class="item"><a href="reg_user_reqs.php">Ελάχιστες Απαιτήσεις</a></li>
         </li>
         <li class="item"><a href="application.php">Αίτηση</a></li>
-        <li class="item button"><a href="login.php">Είσοδος</a></li>
-        <li class="item button secondary"><a href="sign-up.php">Εγγραφή</a></li>
+        <li class="item"><a href="reg_user_profile.php"><img class="profile" src="./media/img/profile_icon.svg" class="profile" alt="profile image" /></a></li>
         <li class="toggle"><span class="bars"></span></li>
     </ul>
 </nav>
+
+
 
 
 <div class="container2">
