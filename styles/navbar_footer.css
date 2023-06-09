@@ -54,6 +54,17 @@ html {
     margin-top: 0.2em;
 }
 
+
+.profile{
+    height:1.74em;
+    padding: auto;
+    margin-top: 0.2em;
+}
+
+.profile:hover {
+    filter: invert(50%);
+}
+
 .button:not(.secondary){
     border-top: #999 solid ;
     border-width: 0.09em;
