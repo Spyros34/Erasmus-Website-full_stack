@@ -70,22 +70,22 @@
                 <form id="signup_form" name="signup_form" action="post_signup_data.php" method="post">
                     <div class="field1">
                         <h1 class="h1_field">Όνομα:</h1>
-                        <input type="text" id="nameField" name="name" pattern="[^\d]+" required><br><br>
+                        <input type="text" id="nameField" name="fname" pattern="[^\d]+" required><br><br>
 
                     </div>
                     <div class="field">
                         <h1 class="h1_field">Επίθετο:</h1>
-                        <input type="text" id="surnameField" name="surname" pattern="[^\d]+" required><br><br>
+                        <input type="text" id="surnameField" name="lname" pattern="[^\d]+" required><br><br>
                     </div>
 
                     <div class="field">
                         <h1 class="h1_field">Αριθμός Μητρώου:</h1>
-                        <input type="text" id="surnameField" name="surname" maxlength="13" pattern="^(2022|2024|2025)\d{9}$" required><br><br>
+                        <input type="text" id="a_mField" name="a_m" maxlength="13" pattern="^(2022|2024|2025)\d{9}$" required><br><br>
                     </div>
 
                     <div class="field">
                         <h1 class="h1_field">Τηλέφωνο:</h1>
-                        <input type="tel" id="mobileField" name="mobile" minlength="10" maxlength="10" required><br><br>
+                        <input type="tel" id="mobileField" name="tel" minlength="10" maxlength="10" required><br><br>
                     </div>
 
                     <div class="field">
@@ -95,7 +95,7 @@
 
                     <div class="field">
                         <h1 class="h1_field">Username:</h1> <!-- Database check -->
-                        <input type="text" id="surnameField" name="surname" required><br><br>
+                        <input type="text" id="surnameField" name="username" required><br><br>
                     </div>
 
                     <div class="field">
