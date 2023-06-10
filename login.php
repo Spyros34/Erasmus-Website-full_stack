@@ -54,6 +54,17 @@
         ';
     }
     
+    if(isset($_COOKIE["username"])){
+
+        $username = $_COOKIE["username"];
+        $password = $_COOKIE["password"];
+        
+        
+    }else{
+        $username = "";
+        $password = "";
+    }
+
 
 ?>
 
@@ -65,17 +76,19 @@
                 <h2>Είσοδος</h2> 
             </div> 
             <p class="par">Συμπληρώστε τα παρακάτω πεδία για να συνδεθείτε.</p>
-            <div class="field1">
-                <h1 class="h1_field">Username:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+           <form id="login_form" name="login_form" action="post_login_data.php" method="post">
+                <div class="field1">
+                    <h1 class="h1_field">Username:</h1>
+                    <input type="text" id="surname" name="username" value="<?php echo $username; ?>" required><br><br>
+                </div>
 
-            <div class="field">
-                <h1 class="h1_field">Password:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
-            </div>
+                <div class="field">
+                    <h1 class="h1_field">Password:</h1>
+                    <input type="password" id="password" name="password" value="<?php echo $password; ?>" required><br><br>
+                </div>
 
-            <input type="submit" value="Είσοδος">   
+                <input type="submit" value="Είσοδος">   
+            </form>
             
         </div>
     </div>

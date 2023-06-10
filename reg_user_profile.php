@@ -36,21 +36,13 @@
     session_start();
 
     // Check if the user is logged in
-    if (isset($_SESSION['username'])) {
+    if (!isset($_SESSION['username'])) {
 
-        echo '<!--Navbar-->
-        <nav class="navbar">
-            <ul class="menu">
-                <li class="logo"> <a href="index.php"><img class="uni_logo" src="./media/img/university-logo.svg" class="uni_logo" alt="Logo image" /></a></li>
-                <li class="item"><a href="index.php">Αρχική</a></li>
-                <li class="item"><a href="more.php">Περισσότερα</a></li>
-                <li class="item"><a href="reqs.php">Ελάχιστες Απαιτήσεις</a></li>
-                <li class="item button"><a href="login.php">Είσοδος</a></li>
-                <li class="item button secondary"><a href="sign-up.php">Εγγραφή</a></li>
-                <li class="toggle"><span class="bars"></span></li>
-            </ul>
-        </nav>
-        ';
+        $redirectUrl = "login.php";
+        echo ' <script>
+            window.location.href = "' . $redirectUrl . '";
+        </script>';
+        exit();
 
        
     } else {
@@ -73,10 +65,10 @@
        
         $con = mysqli_connect($db_server_name,$db_username,$db_pass);
     
-        $username = "nick_tsel";
+        $username = $_SESSION['username'];
         $name = "";
         $surname = "";
-        $am = "";
+        $a_m = "";
         $phone = "";
         $email = "";
         
@@ -93,11 +85,9 @@
                     $row = mysqli_fetch_assoc($result);
                     $name = $row['fname'];
                     $surname = $row['lname'];
-                    $am = $row['a_m'];
+                    $a_m = $row['a_m'];
                     $phone = $row['tel'];
                     $email = $row['email'];
-                } else {
-                    echo "No results found for the username: $username";
                 }
             }
             
@@ -136,7 +126,7 @@
                             <span class="field">Surname :</span>
                             <span class="field_answ"><?php echo $surname; ?></span><br>
                             <span class="field">AM :</span>
-                            <span class="field_answ"><?php echo $am; ?></span><br>
+                            <span class="field_answ"><?php echo $a_m; ?></span><br>
                             <span class="field">Phone :</span>
                             <span class="field_answ"><?php echo $phone; ?></span><br>
                             <span class="field">Email :</span>
@@ -159,7 +149,7 @@
 
                             <div class="field">
                                 <h1 class="h1_field">Αριθμός Μητρώου:</h1>
-                                <input type="text" id="surnameField" name="surname" placeholder=<?php echo $am; ?> maxlength="13" pattern="^(2022|2024|2025)\d{9}$" ><br><br>
+                                <input type="text" id="a_mField" name="a_m" placeholder=<?php echo $a_m; ?> maxlength="13" pattern="^(2022|2024|2025)\d{9}$" ><br><br>
                             </div>
 
                             <div class="field">
@@ -184,6 +174,12 @@
                             
                         </div>
                     </div>
+                </div>
+
+                <div class="logout">
+                <form  action="logout.php" method="post">
+                    <button class="logout_button" type="submit" name="logout">Logout</button>
+                </form>
                 </div>
                 
             </div>
