@@ -94,6 +94,25 @@ input[type="text"]:focus {
     border-color: #ccc;
 }
 
+input[type="password"] {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid rgb(106, 106, 106);
+    background-image: linear-gradient(to bottom, #fff, #e3e3e3b9);
+    border-radius: 4px;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 10px;
+}
+
+input[type="password"]:invalid {
+    border-color: #dc3545;
+}
+
+input[type="password"]:focus {
+    border-color: #ccc;
+}
+
 /* input field2 */
 
 .field {

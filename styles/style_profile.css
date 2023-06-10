@@ -182,7 +182,7 @@ input[type="submit"] {
     cursor: pointer; 
     transition: background-color 0.3s ease; 
     margin-top: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
   
 input[type="submit"]:hover {
@@ -210,6 +210,10 @@ input[type="submit"]:hover {
 
 #ch1:checked ~ .par{
     display: block;
+}
+
+#ch1:checked ~ .logout{
+    display: none;
 }
 
 .edit_icon{
@@ -282,4 +286,21 @@ input[type="submit"]:hover {
 
 .edit_icon:hover {
     filter: invert(19%);
+}
+
+.logout{
+    text-align: center;
+}
+
+.logout_button{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #747472;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.logout_button:hover {
+    background-color: #9e1f1fdc;
 }

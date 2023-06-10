@@ -1,0 +1,76 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Mobile Content */
+
+/* Card */
+.container2 {
+    background-color: #1e1f26; 
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:Opx 90px;
+}
+.content-section{
+    background-color: #e0d8cab3;
+    min-height: 30vh;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items:center ;
+    align-content: space-between;
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 6px;
+}
+
+.content-section .card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content:space-between;
+    flex: 1;
+    margin:20px 20px;
+    box-shadow: 0px 2px 8px 0px rgba(123, 120, 120, 0.249) ;
+    border-radius: 3px; 
+}
+
+.content-section .card .h2_first{
+    margin:15px Opx; 
+    margin-bottom: 10px;
+    font-size: 23px; 
+    font-family:Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+}
+
+h2 {
+    color: #9e1f1fdc;
+}
+
+.h2_success{
+    color: rgba(40, 100, 40, 0.957);
+}
+
+.par{
+    margin-top: 20px;
+}
+
+/* input field1 */
+
+.field1 {
+    margin-top: 20px;
+}
+
+.h1_field {
+    font-size: 19px;
+    font-weight: lighter;
+    font-family: sans-serif;
+}
