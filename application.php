@@ -67,7 +67,55 @@ if (!isset($_SESSION['username'])) {
     </footer>  ';
 
     exit;
+}else{
+
+    $name = "";
+    $surname = "";
+    $a_m = "";
+
+    if(isset($_COOKIE["username"])){
+
+        $name = $_COOKIE["fname"];
+        $surname = $_COOKIE["lname"];
+        $a_m = $_COOKIE["a_m"];
+
+    }else{
+
+        require_once("db_credentials.php");
+
+        $con = mysqli_connect($db_server_name,$db_username,$db_pass);
+    
+        $username = "nick_tsel";
+        $name = "";
+        $surname = "";
+        $a_m = "";
+        
+        if (!$con) {
+            echo "problem in the connection: " . mysqli_connect_error();
+        } else {
+            mysqli_select_db($con, $db_name);
+            $query = "SELECT * FROM users WHERE username = '$username'";
+            $result = mysqli_query($con, $query);
+            if (!$result) {
+                echo "query error: " . mysqli_error($con);
+            } else {
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $name = $row['fname'];
+                    $surname = $row['lname'];
+                    $a_m = $row['a_m'];
+                    
+                }
+            }
+            
+        }
+  
+        mysqli_close($con);
+
+    }
+
 } 
+
 ?>
 
 
@@ -126,17 +174,16 @@ if (!isset($_SESSION['username'])) {
             
             <div class="field1">
                 <h1 class="h1_field">Όνομα:</h1>
-                <input type="text" id="name" name="name" required><br><br>
-
+                <input type="text" id="name" name="name" placeholder="<?php echo $name; ?>" readonly><br><br>
             </div>
             <div class="field">
                 <h1 class="h1_field">Επίθετο:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
+                <input type="text" id="surname" name="surname" placeholder="<?php echo $surname; ?>" readonly><br><br>
             </div>
 
             <div class="field">
                 <h1 class="h1_field">Αριθμός Μητρώου:</h1>
-                <input type="text" id="surname" name="surname" required><br><br>
+                <input type="text" id="a_m" name="a_m" placeholder="<?php echo $a_m; ?>" readonly><br><br>
             </div>
 
             <div class="field">
