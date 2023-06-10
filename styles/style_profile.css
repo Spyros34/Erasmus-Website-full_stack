@@ -137,7 +137,7 @@ input[type="email"] {
     font-size: 16px;
     padding: 10px;
     border: 1px solid rgb(106, 106, 106);
-    background-image: linear-gradient(to bottom, #fff, #e3e3e3b9);
+    background-image: linear-gradient(to bottom, #c5c5c5bf, #c5c5c5);
     border-radius: 4px;
     box-sizing: border-box;
     width: 100%;
