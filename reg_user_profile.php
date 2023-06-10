@@ -158,6 +158,11 @@
                             </div>
 
                             <div class="field">
+                                <h1 class="h1_field">Email:</h1>
+                                <input type="email" id="emailField" name="email" placeholder=<?php echo $email; ?>><br><br>
+                            </div>
+
+                            <div class="field">
                                 <h1 class="h1_field">Password:</h1>
                                 <input type="password" id="passwordField" name="password" minlength="5" pattern="^(?=.*[!#$@%&*])[a-zA-Z0-9!#$@%&*]+$" ><br><br>
                             </div>
@@ -201,6 +206,7 @@
     var passwordField = document.getElementById('passwordField');
     var confirmPasswordField = document.getElementById('confirmPasswordField');
     var passwordMatchError = document.getElementById('passwordMatchError');
+    var infoForm = document.getElementById('info_form');
 
     function checkPasswordMatch() {
         var password = passwordField.value;
@@ -208,9 +214,14 @@
 
         if (password !== confirmPassword) {
             passwordMatchError.style.display = 'block';
+            confirmPasswordField.classList.add('error');
+            infoForm.setAttribute('onsubmit', 'return false;');
         } else {
             passwordMatchError.style.display = 'none';
+            confirmPasswordField.classList.remove('error');
+            infoForm.removeAttribute('onsubmit');
         }
     }
+
 </script>
 
