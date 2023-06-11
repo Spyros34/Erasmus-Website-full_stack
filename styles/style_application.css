@@ -136,6 +136,11 @@ h2 {
 
 form {
   font-family: sans-serif;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items:center ;
+
 }
   
 label {
@@ -500,4 +505,35 @@ input[type="submit"]:hover {
   color: #484949;
   padding-top: 0.5rem;
 }
+
+
+/* Tablet menu */
+@media all and (min-width: 768px) {
+
+
+  form {
+    font-family: sans-serif;
+    width: 35%;
+  }
+  
+   
+}
+
+
+
+/* Desktop menu */
+@media all and (min-width: 1068px) {
+
+  form {
+    font-family: sans-serif;
+    width: 30%;
+  }
+ 
+}
+
+
+
+
+
+
 
