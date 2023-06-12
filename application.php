@@ -53,44 +53,36 @@ if (!isset($_SESSION['username'])) {
     ';
     exit;
 } else {
+
+    require_once("db_credentials.php");
+    $con = mysqli_connect($db_server_name, $db_username, $db_pass);
+
+    $username = $_SESSION["username"];
     $name = "";
     $surname = "";
     $a_m = "";
 
-    if (isset($_COOKIE["username"])) {
-        $name = $_COOKIE["fname"];
-        $surname = $_COOKIE["lname"];
-        $a_m = $_COOKIE["a_m"];
+    if (!$con) {
+        echo "problem in the connection: " . mysqli_connect_error();
     } else {
-        require_once("db_credentials.php");
-        $con = mysqli_connect($db_server_name, $db_username, $db_pass);
-
-        $username = "nick_tsel";
-        $name = "";
-        $surname = "";
-        $a_m = "";
-
-        if (!$con) {
-            echo "problem in the connection: " . mysqli_connect_error();
+        mysqli_select_db($con, $db_name);
+        $query = "SELECT * FROM users WHERE username = '$username'";
+        $result = mysqli_query($con, $query);
+        if (!$result) {
+            echo "query error: " . mysqli_error($con);
         } else {
-            mysqli_select_db($con, $db_name);
-            $query = "SELECT * FROM users WHERE username = '$username'";
-            $result = mysqli_query($con, $query);
-            if (!$result) {
-                echo "query error: " . mysqli_error($con);
-            } else {
-                if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    $name = $row['fname'];
-                    $surname = $row['lname'];
-                    $a_m = $row['a_m'];
-                }
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $name = $row['fname'];
+                $surname = $row['lname'];
+                $a_m = $row['a_m'];
             }
         }
-
-        mysqli_close($con);
     }
+
+    mysqli_close($con);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -133,18 +125,18 @@ if (!isset($_SESSION['username'])) {
                     <h2>Φόρμα Αίτησης Μετακίνησης</h2>
                 </div>
                 <p class="par">Παρακάτω ακολουθεί η φόρμα αίτησης μετακίνησης ενός φοιτητή/φοιτήτριας προς Πανεπιστήμιο του εξωτερικού στο πλαίσιο του Erasmus.</p>
-                <form action="submit_application.php" method="POST">
+                <form action="submit_application.php" method="POST" enctype="multipart/form-data">
                     <div class="field1">
                         <h1 class="h1_field">Όνομα:</h1>
-                        <input type="text" id="name" name="name" placeholder="<?php echo $name; ?>" readonly><br><br>
+                        <input type="text" id="name" name="name"  value="<?php echo $name; ?>" readonly><br><br>
                     </div>
                     <div class="field">
                         <h1 class="h1_field">Επίθετο:</h1>
-                        <input type="text" id="surname" name="surname" placeholder="<?php echo $surname; ?>" readonly><br><br>
+                        <input type="text" id="surname" name="surname" value="<?php echo $surname; ?>" readonly><br><br>
                     </div>
                     <div class="field">
                         <h1 class="h1_field">Αριθμός Μητρώου:</h1>
-                        <input type="text" id="a_m" name="a_m" placeholder="<?php echo $a_m; ?>" readonly><br><br>
+                        <input type="text" id="a_m" name="a_m" value="<?php echo $a_m; ?>" readonly><br><br>
                     </div>
                     <div class="field">
                         <h1 class="h1_field">Ποσοστό «περασμένων» μαθημάτων έως και το προηγούμενο έτος:</h1>
@@ -172,30 +164,90 @@ if (!isset($_SESSION['username'])) {
                     <div class="auto_form1">
                         <br>
                         <select name="university1">
-                            <option selected value="1">University of Barcelona</option>
-                            <option value="2">Hanze University</option>
-                            <option value="3">University of Bologna</option>
-                            <option value="4">University of Vienna</option>
+                            <?php
+                            require_once("db_credentials.php");
+                            $con = mysqli_connect($db_server_name, $db_username, $db_pass);                
+                            mysqli_select_db($con, $db_name);     
+                            // Fetch universities from the database
+                            $query = "SELECT * FROM Universities";
+                            $result = mysqli_query($con, $query);
+
+                            // Check if the query was successful
+                            if (!$result) {
+                                echo "Query Error: " . mysqli_error($con);
+                                // Handle the error appropriately (e.g., display an error message, redirect, etc.)
+                            } else {
+                                // Generate the <option> elements for the dropdown
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $university_name = $row['university_name'];
+                                    $country = $row['country'];
+                                    echo "<option value='$university_name'>$university_name</option>";
+                                }
+                            }
+
+                            
+                            mysqli_close($con);
+                            ?>
                         </select>
                     </div>
                     <h1 class="h1_form">Πανεπιστήμιο - 2η επιλογή :</h1>
                     <div class="auto_form2">
                         <br>
                         <select name="university2">
-                            <option selected value="1">University of Barcelona</option>
-                            <option value="2">Hanze University</option>
-                            <option value="3">University of Bologna</option>
-                            <option value="4">University of Vienna</option>
+                        <?php
+                            require_once("db_credentials.php");
+                            $con = mysqli_connect($db_server_name, $db_username, $db_pass);                
+                            mysqli_select_db($con, $db_name);     
+                            // Fetch universities from the database
+                            $query = "SELECT * FROM Universities";
+                            $result = mysqli_query($con, $query);
+
+                            // Check if the query was successful
+                            if (!$result) {
+                                echo "Query Error: " . mysqli_error($con);
+                                // Handle the error appropriately (e.g., display an error message, redirect, etc.)
+                            } else {
+                                // Generate the <option> elements for the dropdown
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $university_name = $row['university_name'];
+                                    $country = $row['country'];
+                                    echo "<option value='$university_name'>$university_name</option>";
+                                }
+                            }
+
+                            
+                            mysqli_close($con);
+                            ?>
                         </select>
                     </div>
                     <h1 class="h1_form">Πανεπιστήμιο - 3η επιλογή :</h1>
                     <div class="auto_form3">
                         <br>
                         <select name="university3">
-                            <option selected value="1">University of Barcelona</option>
-                            <option value="2">Hanze University</option>
-                            <option value="3">University of Bologna</option>
-                            <option value="4">University of Vienna</option>
+                            <?php
+                                require_once("db_credentials.php");
+                                $con = mysqli_connect($db_server_name, $db_username, $db_pass);                
+                                mysqli_select_db($con, $db_name);     
+                                // Fetch universities from the database
+                                $query = "SELECT * FROM Universities";
+                                $result = mysqli_query($con, $query);
+
+                                // Check if the query was successful
+                                if (!$result) {
+                                    echo "Query Error: " . mysqli_error($con);
+                                    // Handle the error appropriately (e.g., display an error message, redirect, etc.)
+                                } else {
+                                    // Generate the <option> elements for the dropdown
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $university_name = $row['university_name'];
+                                        $country = $row['country'];
+                                        echo "<option value='$university_name'>$university_name</option>";
+                                    }
+                                }
+
+                                
+                                mysqli_close($con);
+                            ?>
                         </select>
                     </div>
                     <div class="file_upload1">
