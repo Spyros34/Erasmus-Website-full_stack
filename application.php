@@ -66,6 +66,41 @@ if (!isset($_SESSION['username'])) {
         echo "problem in the connection: " . mysqli_connect_error();
     } else {
         mysqli_select_db($con, $db_name);
+        $query = "SELECT user_id FROM Users WHERE username = '$username'";
+        $result = mysqli_query($con, $query);
+        if (!$result) {
+            mysqli_close($con);  
+            echo "query error: " . mysqli_error($con);
+        } else {
+            if (mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                $user_id = $row['user_id'];
+            }
+
+            $query = "SELECT user_type FROM User_t WHERE user_type_id = '$user_id'";
+            $result = mysqli_query($con, $query);
+            if (!$result) {
+                mysqli_close($con);  
+                echo "query error: " . mysqli_error($con);
+            } else {
+                if (mysqli_num_rows($result) > 0) {
+                    $row = mysqli_fetch_assoc($result);
+                    $user_type = $row['user_type'];
+                }
+                
+                if ($user_type == '1')
+                {
+                    mysqli_close($con);  
+                    $redirectUrl = "admin_control_panel.php";
+                    echo ' <script>
+                        window.location.href = "' . $redirectUrl . '";
+                    </script>';
+                    exit();
+                }
+
+            }
+        }
+
         $query = "SELECT * FROM users WHERE username = '$username'";
         $result = mysqli_query($con, $query);
         if (!$result) {
