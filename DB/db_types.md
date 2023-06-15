@@ -27,6 +27,17 @@ CREATE TABLE User_t (
     FOREIGN KEY (user_type_id) REFERENCES Users (user_id)
 );
 
+```
+
+**Dates**
+
+```
+
+CREATE TABLE dates (
+    date_from DATE,
+    date_to DATE,
+    enable INT 
+);
 
 
 ```
