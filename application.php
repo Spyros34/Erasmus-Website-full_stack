@@ -54,68 +54,334 @@ if (!isset($_SESSION['username'])) {
     exit;
 } else {
 
+    //check if the admin has turned on the dates for the application 
     require_once("db_credentials.php");
     $con = mysqli_connect($db_server_name, $db_username, $db_pass);
 
     $username = $_SESSION["username"];
-    $name = "";
-    $surname = "";
-    $a_m = "";
 
-    if (!$con) {
-        echo "problem in the connection: " . mysqli_connect_error();
+    mysqli_select_db($con, $db_name);
+    $query = "SELECT enable FROM dates limit 1";
+    $result = mysqli_query($con, $query);
+    if (!$result) {
+        mysqli_close($con);  
+        echo "query error: " . mysqli_error($con);
     } else {
-        mysqli_select_db($con, $db_name);
-        $query = "SELECT user_id FROM Users WHERE username = '$username'";
-        $result = mysqli_query($con, $query);
-        if (!$result) {
-            mysqli_close($con);  
-            echo "query error: " . mysqli_error($con);
-        } else {
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $user_id = $row['user_id'];
-            }
-
-            $query = "SELECT user_type FROM User_t WHERE user_type_id = '$user_id'";
-            $result = mysqli_query($con, $query);
-            if (!$result) {
-                mysqli_close($con);  
-                echo "query error: " . mysqli_error($con);
-            } else {
-                if (mysqli_num_rows($result) > 0) {
-                    $row = mysqli_fetch_assoc($result);
-                    $user_type = $row['user_type'];
-                }
-                
-                if ($user_type == '1')
-                {
-                    mysqli_close($con);  
-                    $redirectUrl = "admin_control_panel.php";
-                    echo ' <script>
-                        window.location.href = "' . $redirectUrl . '";
-                    </script>';
-                    exit();
-                }
-
-            }
-        }
-
-        $query = "SELECT * FROM users WHERE username = '$username'";
-        $result = mysqli_query($con, $query);
-        if (!$result) {
-            echo "query error: " . mysqli_error($con);
-        } else {
-            if (mysqli_num_rows($result) > 0) {
-                $row = mysqli_fetch_assoc($result);
-                $name = $row['fname'];
-                $surname = $row['lname'];
-                $a_m = $row['a_m'];
-            }
-        }
+        $row = mysqli_fetch_assoc($result);
+        $enable = $row['enable'];
     }
 
-    mysqli_close($con);
+    if ( $enable == 0 )
+    {
+        // Close the database connection
+        mysqli_close($con);
+        echo '
+        <!DOCTYPE html>
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="./styles/style_post_signup.css">
+        <link rel="stylesheet" href="./styles/navbar_footer.css">
+
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+
+        <script>
+            $(function() {
+                $(".toggle").on("click", function() {
+                    if ($(".item").hasClass("active")) {
+                        $(".item").removeClass("active");
+                    } else {
+                        $(".item").addClass("active");
+                    }
+                });
+            });
+        </script>
+        </head>
+
+        <body>
+            <!--Navbar-->
+            <nav class="navbar">
+                <ul class="menu">
+                    <li class="logo"> <a href="index.php"><img class="uni_logo" src="./media/img/university-logo.svg" class="uni_logo" alt="Logo image" /></a></li>
+                    <li class="item"><a href="index.php">Αρχική</a></li>
+                    <li class="item"><a href="reg_user_more.php">Περισσότερα</a></li>
+                    <li class="item"><a href="reg_user_reqs.php">Ελάχιστες Απαιτήσεις</a></li>
+                    </li>
+                    <li class="item"><a href="application.php">Αίτηση</a></li>
+                    <li class="item"><a href="reg_user_profile.php"><img class="profile" src="./media/img/profile_icon.svg" class="profile" alt="profile image" /></a></li>
+                    <li class="toggle"><span class="bars"></span></li>
+                </ul>
+            </nav>
+
+            <div class="container2">
+                <div class="content-section"> 
+                    <div class="card">
+                        <div class="h2_first">
+                            <h2>Error</h2>  
+                        </div> 
+                        <p class="par">Η Αιτήσεις δεν έχουν ενεργοποιηθεί απο τον διαχειριστή. Γίνεστε redirect σε 5s.</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <span>Επικοινωνήστε μαζί μας: info@erasmus.gr | Τηλέφωνο: +30 210 1234567</span>
+            </footer>
+        ';
+
+        $delay = 5; // Delay in seconds before redirection
+        $redirectUrl = "index.php";
+        echo ' <script>
+            setTimeout(function() {
+                window.location.href = "' . $redirectUrl . '";
+            }, ' . ($delay * 1000) . '); // Delay in milliseconds
+            </script>';
+        exit();
+
+    }else{
+        $query = "SELECT date_from, date_to FROM dates";
+        $result = mysqli_query($con, $query);
+
+        if (!$result) {
+            // Handle query error
+            mysqli_close($con);
+            exit();
+        }
+
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+            // Loop through the rows and display the date_from and date_to values
+            while ($row = mysqli_fetch_assoc($result)) {
+                $dateFrom = $row['date_from'];
+                $dateTo = $row['date_to'];
+
+                // Do something with the retrieved values
+                // ...
+            }
+
+            $currentTimestamp = $_SERVER['REQUEST_TIME'];
+        
+            // Format the timestamp into the desired date format
+            $currentDate = date('Y-m-d', $currentTimestamp);
+
+            if (!(($dateFrom <= $currentDate) && ($dateTo >= $currentDate)) ){
+
+                // Close the database connection
+                mysqli_close($con);
+                echo '
+                <!DOCTYPE html>
+                <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta charset="UTF-8">
+                <link rel="stylesheet" href="./styles/style_post_signup.css">
+                <link rel="stylesheet" href="./styles/navbar_footer.css">
+
+                <script
+                    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+                    crossorigin="anonymous"></script>
+
+                <script>
+                    $(function() {
+                        $(".toggle").on("click", function() {
+                            if ($(".item").hasClass("active")) {
+                                $(".item").removeClass("active");
+                            } else {
+                                $(".item").addClass("active");
+                            }
+                        });
+                    });
+                </script>
+                </head>
+
+                <body>
+                    <!--Navbar-->
+                    <nav class="navbar">
+                        <ul class="menu">
+                            <li class="logo"> <a href="index.php"><img class="uni_logo" src="./media/img/university-logo.svg" class="uni_logo" alt="Logo image" /></a></li>
+                            <li class="item"><a href="index.php">Αρχική</a></li>
+                            <li class="item"><a href="reg_user_more.php">Περισσότερα</a></li>
+                            <li class="item"><a href="reg_user_reqs.php">Ελάχιστες Απαιτήσεις</a></li>
+                            </li>
+                            <li class="item"><a href="application.php">Αίτηση</a></li>
+                            <li class="item"><a href="reg_user_profile.php"><img class="profile" src="./media/img/profile_icon.svg" class="profile" alt="profile image" /></a></li>
+                            <li class="toggle"><span class="bars"></span></li>
+                        </ul>
+                    </nav>
+
+                    <div class="container2">
+                        <div class="content-section"> 
+                            <div class="card">
+                                <div class="h2_first">
+                                    <h2>Error</h2>  
+                                </div> 
+                                <p class="par">Οι αιτήσεις είναι ανοιχτές από ' . $dateFrom . ' εως ' . $dateTo . '. Γίνεστε redirect σε 5s.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="footer">
+                        <span>Επικοινωνήστε μαζί μας: info@erasmus.gr | Τηλέφωνο: +30 210 1234567</span>
+                    </footer>
+                ';
+
+                $delay = 5; // Delay in seconds before redirection
+                $redirectUrl = "index.php";
+                echo ' <script>
+                    setTimeout(function() {
+                        window.location.href = "' . $redirectUrl . '";
+                    }, ' . ($delay * 1000) . '); // Delay in milliseconds
+                    </script>';
+                exit();
+
+
+                
+            }else{
+
+
+                $name = "";
+                $surname = "";
+                $a_m = "";
+    
+                if (!$con) {
+                    echo "problem in the connection: " . mysqli_connect_error();
+                } else {
+                    mysqli_select_db($con, $db_name);
+                    $query = "SELECT user_id FROM Users WHERE username = '$username'";
+                    $result = mysqli_query($con, $query);
+                    if (!$result) {
+                        mysqli_close($con);  
+                        echo "query error: " . mysqli_error($con);
+                    } else {
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $user_id = $row['user_id'];
+                        }
+    
+                        $query = "SELECT user_type FROM User_t WHERE user_type_id = '$user_id'";
+                        $result = mysqli_query($con, $query);
+                        if (!$result) {
+                            mysqli_close($con);  
+                            echo "query error: " . mysqli_error($con);
+                        } else {
+                            if (mysqli_num_rows($result) > 0) {
+                                $row = mysqli_fetch_assoc($result);
+                                $user_type = $row['user_type'];
+                            }
+                            
+                            if ($user_type == '1')
+                            {
+                                mysqli_close($con);  
+                                $redirectUrl = "admin_control_panel.php";
+                                echo ' <script>
+                                    window.location.href = "' . $redirectUrl . '";
+                                </script>';
+                                exit();
+                            }
+    
+                        }
+                    }
+    
+                    $query = "SELECT * FROM users WHERE username = '$username'";
+                    $result = mysqli_query($con, $query);
+                    if (!$result) {
+                        echo "query error: " . mysqli_error($con);
+                    } else {
+                        if (mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $name = $row['fname'];
+                            $surname = $row['lname'];
+                            $a_m = $row['a_m'];
+                        }
+                    }
+                }
+    
+                mysqli_close($con);
+    
+            }
+            
+        }else{
+            // Close the database connection
+            mysqli_close($con);
+            echo '
+            <!DOCTYPE html>
+            <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta charset="UTF-8">
+            <link rel="stylesheet" href="./styles/style_post_signup.css">
+            <link rel="stylesheet" href="./styles/navbar_footer.css">
+
+            <script
+                src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+                integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+                crossorigin="anonymous"></script>
+
+            <script>
+                $(function() {
+                    $(".toggle").on("click", function() {
+                        if ($(".item").hasClass("active")) {
+                            $(".item").removeClass("active");
+                        } else {
+                            $(".item").addClass("active");
+                        }
+                    });
+                });
+            </script>
+            </head>
+
+            <body>
+                <!--Navbar-->
+                <nav class="navbar">
+                    <ul class="menu">
+                        <li class="logo"> <a href="index.php"><img class="uni_logo" src="./media/img/university-logo.svg" class="uni_logo" alt="Logo image" /></a></li>
+                        <li class="item"><a href="index.php">Αρχική</a></li>
+                        <li class="item"><a href="reg_user_more.php">Περισσότερα</a></li>
+                        <li class="item"><a href="reg_user_reqs.php">Ελάχιστες Απαιτήσεις</a></li>
+                        </li>
+                        <li class="item"><a href="application.php">Αίτηση</a></li>
+                        <li class="item"><a href="reg_user_profile.php"><img class="profile" src="./media/img/profile_icon.svg" class="profile" alt="profile image" /></a></li>
+                        <li class="toggle"><span class="bars"></span></li>
+                    </ul>
+                </nav>
+
+                <div class="container2">
+                    <div class="content-section"> 
+                        <div class="card">
+                            <div class="h2_first">
+                                <h2>Error</h2>  
+                            </div> 
+                            <p class="par">Κάτι πήγε λάθος δοκιμάστε ξανά αργότερα. Γίνεστε redirect σε 5s.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <footer class="footer">
+                    <span>Επικοινωνήστε μαζί μας: info@erasmus.gr | Τηλέφωνο: +30 210 1234567</span>
+                </footer>
+            ';
+
+            $delay = 5; // Delay in seconds before redirection
+            $redirectUrl = "index.php";
+            echo ' <script>
+                setTimeout(function() {
+                    window.location.href = "' . $redirectUrl . '";
+                }, ' . ($delay * 1000) . '); // Delay in milliseconds
+                </script>';
+            exit();
+
+
+
+
+        }
+
+
+    }
+    
+
+    
 }
 
 ?>

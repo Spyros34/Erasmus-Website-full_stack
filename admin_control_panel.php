@@ -127,6 +127,7 @@
                 <div class="h2_first">
                     <h2>Πίνακας Ελέγχου</h2> 
                 </div> 
+
                 <div class="date-dropdown1"> 
                     <label for="ch1">
                         <p>Περίοδος Αιτήσεων <img class="edit_icon" src="./media/img/calendar.svg" alt="Edit"></p>
@@ -151,17 +152,17 @@
 
                 <div class="date-dropdown2"> 
                     <label for="ch2">
-                        <p>Περίοδος Αιτήσεων <img class="edit_icon" src="./media/img/form.svg" alt="Edit"></p>
+                        <p>Αιτήσεις <img class="edit_icon" src="./media/img/form.svg" alt="Edit"></p>
                     </label>
                     <div class="date-info2">
-                        <p class="h1 par_button">Καθορισμός έναρξης και λήξης της περιόδου αιτήσεων</p>
+                        <p class="h1 par_button">Ακολουθούν όλες οι διαθέσιμες αιτήσεις</p>
                         <p class="par">Περίοδος Αιτήσεων</p>
                     </div>
                 </div>
 
                 <div class="date-dropdown3"> 
                     <label for="ch3">
-                        <p>Περίοδος Αιτήσεων <img class="edit_icon" src="./media/img/checked_form.svg" alt="Edit"></p>
+                        <p>Δεκτές Αιτήσεις <img class="edit_icon" src="./media/img/checked_form.svg" alt="Edit"></p>
                     </label>
                     <div class="date-info3">
                         <p class="h1 par_button">Καθορισμός έναρξης και λήξης της περιόδου αιτήσεων</p>
@@ -171,7 +172,7 @@
 
                 <div class="date-dropdown4"> 
                     <label for="ch4">
-                        <p>Περίοδος Αιτήσεων <img class="edit_icon" src="./media/img/universities_icon.svg" alt="Edit"></p>
+                        <p>Συνεργαζόμενα Πανεπιστήμια <img class="edit_icon" src="./media/img/universities_icon.svg" alt="Edit"></p>
                     </label>
                     <div class="date-info4">
                         <p class="h1 par_button">Καθορισμός έναρξης και λήξης της περιόδου αιτήσεων</p>
@@ -181,7 +182,7 @@
 
                 <div class="date-dropdown5"> 
                     <label for="ch5">
-                        <p>Περίοδος Αιτήσεων <img class="edit_icon" src="./media/img/admin_settings.svg" alt="Edit"></p>
+                        <p>Διαχειριστές <img class="edit_icon" src="./media/img/admin_settings.svg" alt="Edit"></p>
                     </label>
                     <div class="date-info5">
                         <p class="h1 par_button">Καθορισμός έναρξης και λήξης της περιόδου αιτήσεων</p>
