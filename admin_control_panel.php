@@ -11,10 +11,9 @@
 <link rel="stylesheet" href="./styles/admin_control_panel.css">
 <link rel="stylesheet" href="./styles/navbar_footer.css">
 
-<script
-    src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-    integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
-    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 
 <script>
     $(function() {
@@ -32,7 +31,6 @@
 <body>
 
 <?php
-
 
    // Start a session
     session_start();
@@ -156,7 +154,17 @@
                     </label>
                     <div class="date-info2">
                         <p class="h1 par_button">Ακολουθούν όλες οι διαθέσιμες αιτήσεις</p>
-                        <p class="par">Περίοδος Αιτήσεων</p>
+                        <div class="date-info2">
+
+                            <div id="application-list">
+                               
+                            </div>
+
+                            <div id="message2" class="message"></div>
+                            
+
+                        </div>
+
                     </div>
                 </div>
 
@@ -325,6 +333,65 @@
     });
 
 
+
+
+</script>
+
+
+<script>
+  $(document).ready(function() {
+    // Function to load applications
+    function loadApplications() {
+        $.ajax({
+            url: "load_applications_ajax.php",
+            method: "GET",
+            success: function(response) {
+                $("#application-list").html(response);
+              
+            },
+            error: function() {
+                $("#application-list").html("<p>An error occurred while loading the applications.</p>");
+              
+            }
+        });
+    }
+
+    // Call the function to load applications when the page loads
+    loadApplications();
+
+    
+});
+
+function showMessage2(message, messageType) {
+        var messageElement = document.getElementById('message2');
+        messageElement.textContent = message;
+        messageElement.className = 'message ' + messageType;
+
+        messageElement.style.display = 'block';
+        messageElement.style.opacity = 0;
+
+        if (messageType === 'success') {
+            messageElement.style.backgroundColor = 'rgba(40, 100, 40, 0.957)';
+        } else if (messageType === 'error') {
+            messageElement.style.backgroundColor = '#9e1f1fdc';
+        }
+
+        var fadeInInterval = setInterval(function() {
+            messageElement.style.opacity = parseFloat(messageElement.style.opacity) + 0.05;
+            if (parseFloat(messageElement.style.opacity) >= 1) {
+                clearInterval(fadeInInterval);
+                setTimeout(function() {
+                    var fadeOutInterval = setInterval(function() {
+                        messageElement.style.opacity = parseFloat(messageElement.style.opacity) - 0.05;
+                        if (parseFloat(messageElement.style.opacity) <= 0) {
+                            clearInterval(fadeOutInterval);
+                            messageElement.style.display = 'none';
+                        }
+                    }, 50);
+                }, 3000); // Adjust the duration (in milliseconds) here
+            }
+        }, 50);
+    }
 
 
 </script>
