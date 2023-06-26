@@ -247,6 +247,7 @@ input[type="password"]:focus {
 }
 
 
+
 .date-dropdown1 .edit_icon{
     height:1em;
     padding: auto;
@@ -531,6 +532,27 @@ form{
     background-color: #4f4135;
 }
 
+
+.submit-button1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4f4135;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    margin-bottom: 17px;
+}
+
+.submit-button1:hover {
+    background-color: #4f4135;
+}
+
 .disable_indicator{
     display: flex;
     flex-direction: row;
@@ -598,6 +620,60 @@ form{
 .status-circle.red {
     background-color: red;
 }
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    box-sizing: border-box;
+    background-color: #767575d0;
+    justify-content:center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items:center ;
+    align-content: space-between;
+    text-align: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 6px;
+
+}
+
+.card-content a {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    color: #4f4135;
+    text-decoration: underline;
+}
+
+.card-content a:hover {
+    text-decoration: none;
+}
+
+
+.label_names{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family:sans-serif;
+    font-size:large;
+}
+  
+.card-content input[type="checkbox"] {
+    margin-left: 15px;
+    transform: scale(1.3); /* Adjust the scale as needed */
+    order: 2;
+}
+
+  
 
 @media (max-width: 480px) {
     .message {
