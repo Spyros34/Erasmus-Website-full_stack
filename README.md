@@ -30,6 +30,5 @@ ErasmApp is designed as an end-to-end solution for managing the Erasmus program 
 ![more](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/1fd2ef88-704f-4e71-ba9a-a9bfbf122ff5)
 ![reqs](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/16402102-11a8-4426-bf1f-a0198fadb068)
 ![control_panel](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/738e40d3-0752-4b4e-913b-7ca4073e1e62)
-![applications_control_panel](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/344c2a15-97c6-4eb1-818b-989fab7f7483)![dates](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/a1136f60-5e46-4f21-a90e-b5ac10764f09)![profile](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/33261f6c-84ab-4211-b547-999bbe62a4ef)
-
+![applications_control_panel](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/344c2a15-97c6-4eb1-818b-989fab7f7483)![dates](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/a1136f60-5e46-4f21-a90e-b5ac10764f09)
 
