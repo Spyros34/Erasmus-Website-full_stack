@@ -16,10 +16,6 @@ Directory Structure: Organized into media, styles, and files directories for eff
 Functionality Implementation: PHP files handling dynamic content rendering, user interactions, and backend processes.
 Admin Control Panel: Advanced features for system administrators to manage application periods, review student applications, and customize system settings.
 
-Setup and Installation Guide
-
-The guide provides detailed steps for deploying ErasmApp using XAMPP for MySQL, including configuration of the htdocs folder and permission settings. It outlines the process for users to access the application based on their role, emphasizing the functionalities accessible to administrators through the control panel.
-
 Detailed Usage Scenarios
 
 Visitors can access general information about the Erasmus program, including eligibility and application guidelines.
