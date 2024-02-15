@@ -24,3 +24,8 @@ Administrators are equipped with tools to manage the application cycle, assess s
 
 
 ErasmApp is designed as an end-to-end solution for managing the Erasmus program applications, emphasizing user-friendly design, security, and administrative efficiency. This README, along with the included documentation, offers a detailed insight into setting up the application, navigating its features, and leveraging its capabilities to enhance the Erasmus application experience.
+
+
+![index](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/82d2bf5a-def5-4489-bf87-a81a81964c4d)
+![more](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/1fd2ef88-704f-4e71-ba9a-a9bfbf122ff5)
+![reqs](https://github.com/Spyros34/Erasmus-Website-full_stack/assets/57417722/16402102-11a8-4426-bf1f-a0198fadb068)
