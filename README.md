@@ -1,7 +1,5 @@
 ErasmApp Project Overview
 
-Introduction
-
 The ErasmApp project aims to simplify the Erasmus mobility application process for students seeking study abroad opportunities. This web application focuses on a responsive design to ensure optimal usability across various devices, prioritizing user experience.
 
 Project Objectives
@@ -28,6 +26,5 @@ Visitors can access general information about the Erasmus program, including eli
 Registered Users have the capability to submit applications, upload necessary documents, and select preferred universities, all within a user-friendly interface.
 Administrators are equipped with tools to manage the application cycle, assess student submissions, and modify system configurations as needed.
 
-Conclusion and Documentation
 
 ErasmApp is designed as an end-to-end solution for managing the Erasmus program applications, emphasizing user-friendly design, security, and administrative efficiency. This README, along with the included documentation, offers a detailed insight into setting up the application, navigating its features, and leveraging its capabilities to enhance the Erasmus application experience.
